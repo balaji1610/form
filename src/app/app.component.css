@@ -1,0 +1,11 @@
+.top_pd {
+  padding-top: 120px;
+}
+.text_align {
+  text-align: center;
+}
+
+.errormessage {
+  color: red;
+  /* display: none; */
+}

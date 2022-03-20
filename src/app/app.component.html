@@ -1,0 +1,199 @@
+<!-- <h1>{{ title }}</h1> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col top_pd">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
+        {{ form1 }}</button
+      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop2"
+      >
+        {{ form2 }}
+      </button>
+      <!-- Modal -->
+
+      <!--START Form_1-->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                {{ form1 }}
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="container mt-3">
+                <form
+                  autocomplete="off"
+                  #register="ngForm"
+                  (submit)="Getfromdata(register.value)"
+                >
+                  <div class="mb-3 mt-3">
+                    <label for="name">Name:</label>
+                    <input
+                      required
+                      minlength="2"
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      autocomplete="off"
+                      name="name"
+                      #name="ngModel"
+                      ngModel
+                    />
+                    <span
+                      *ngIf="name.invalid && name.touched"
+                      class="errormessage"
+                      >Please Enter Vaild Data</span
+                    >
+                  </div>
+                  <div class="mb-3 mt-3">
+                    <label for="email">Email:</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      autocomplete="off"
+                      name="email"
+                      #email="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span
+                      *ngIf="email.invalid && email.touched"
+                      class="errormessage"
+                      >Please Enter Vaild Data</span
+                    >
+                  </div>
+                  <div class="mb-3">
+                    <label for="pwd">Password:</label>
+                    <input
+                      required
+                      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                      type="password"
+                      class="form-control"
+                      id="pwd"
+                      autocomplete="off"
+                      name="pswd"
+                      #pswd="ngModel"
+                      ngModel
+                    />
+                    <span
+                      *ngIf="pswd.invalid && pswd.touched"
+                      class="errormessage"
+                      >Please Enter Vaild Data</span
+                    >
+                  </div>
+                  <div class="mb-3">
+                    <label for="number">Mobile Number:</label>
+                    <input
+                      required
+                      type="text"
+                      class="form-control"
+                      id="number"
+                      autocomplete="off"
+                      name="number"
+                      #number="ngModel"
+                      ngModel
+                      minlength="10"
+                      maxlength="10"
+                    />
+                    <span
+                      *ngIf="number.invalid && number.touched"
+                      class="errormessage"
+                      >Please Enter Vaild Data</span
+                    >
+                  </div>
+
+                  <button
+                    [disabled]="register.invalid"
+                    type="submit"
+                    class="btn btn-primary"
+                  >
+                    Submit</button
+                  >&nbsp;&nbsp;&nbsp;
+                  <button type="reset" class="btn btn-primary" value="Reset">
+                    Reset
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!-- <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">Understood</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End Form_1-->
+      <div
+        class="modal fade"
+        id="staticBackdrop2"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">{{ form2 }}</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <!-- <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">Understood</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End Form_2-->
+    </div>
+    <!--End COl-->
+    <div class="col"></div>
+  </div>
+</div>
