@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 
-import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validator,
+  Validators,
+  MaxLengthValidator,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -19,13 +25,16 @@ export class AppComponent {
   }
   // reactive Form
   registerV2 = new FormGroup({
-    name: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.email),
-    pswd: new FormControl(
+    name: new FormControl('', Validators.minLength(3)),
+    email: new FormControl(
       '',
-      Validators.pattern('(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
+      Validators.pattern('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
     ),
-    number: new FormControl('', Validators.minLength(10)),
+    // pswd: new FormControl('', Validators.required),
+    number: new FormControl(
+      '',
+      Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')
+    ),
   });
 
   GetfromdataV2() {
@@ -40,11 +49,19 @@ export class AppComponent {
     return this.registerV2.get('email');
   }
 
-  get vpswd() {
-    return this.registerV2.get('pswd');
-  }
+  // get vpswd() {
+  //   return this.registerV2.get('pswd');
+  // }
 
   get vnumber() {
     return this.registerV2.get('number');
+  }
+
+  reactiveForm() {
+    alert('Form Successfully Vaild');
+  }
+
+  templateForm() {
+    alert('Form Successfully Vaild');
   }
 } // End
