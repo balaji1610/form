@@ -75,6 +75,8 @@
                   <div class="mb-3 mt-3">
                     <label for="email">Email:</label>
                     <input
+                      required
+                      pattern="@"
                       type="email"
                       class="form-control"
                       id="email"
@@ -82,7 +84,6 @@
                       name="email"
                       #email="ngModel"
                       ngModel
-                      required
                     />
                     <span
                       *ngIf="email.invalid && email.touched"
@@ -106,7 +107,7 @@
                     <span
                       *ngIf="pswd.invalid && pswd.touched"
                       class="errormessage"
-                      >Please Enter Vaild Data</span
+                      >Please Make Strong Password</span
                     >
                   </div>
                   <div class="mb-3">
@@ -177,7 +178,77 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">...</div>
+            <div class="modal-body">
+              <form [formGroup]="registerV2" (ngSubmit)="GetfromdataV2()">
+                <div class="mb-3 mt-3">
+                  <label for="name">Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    formControlName="name"
+                  />
+                  <span
+                    *ngIf="vname && vname.invalid && vname.touched"
+                    class="errormessageV2"
+                    >Please Enter Vaild Data</span
+                  >
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="email">Email:</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    autocomplete="off"
+                    formControlName="email"
+                  />
+                  <span
+                    *ngIf="vemail && vemail.invalid && vemail.touched"
+                    class="errormessageV2"
+                    >Please Enter Vaild Data</span
+                  >
+                </div>
+                <div class="mb-3">
+                  <label for="pwd">Password:</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    autocomplete="off"
+                    formControlName="pswd"
+                  />
+                  <span
+                    *ngIf="vpswd && vpswd.invalid && vpswd.touched"
+                    class="errormessageV2"
+                    >Please Make Strong Password</span
+                  >
+                </div>
+                <div class="mb-3">
+                  <label for="number">Mobile Number:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    formControlName="number"
+                  />
+                  <span
+                    *ngIf="vnumber && vnumber.invalid && vnumber.touched"
+                    class="errormessageV2"
+                    >Please Enter Vaild Data</span
+                  >
+                </div>
+
+                <button
+                  [disabled]="registerV2.invalid"
+                  type="submit"
+                  class="btn btn-warning"
+                >
+                  Submit</button
+                >&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-success" value="Reset">
+                  Reset
+                </button>
+              </form>
+            </div>
             <div class="modal-footer">
               <!-- <button
                 type="button"
